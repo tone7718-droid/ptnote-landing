@@ -16,7 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;color:var(--ink);line-height:1.6;background:var(--bg);-webkit-font-smoothing:antialiased}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,'Segoe UI',sans-serif;color:var(--ink);line-height:1.6;background:var(--bg);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -36,6 +36,10 @@ section{padding:96px 0}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
 .btn-sm{padding:9px 18px;font-size:14px;border-radius:10px}
 .menu-btn{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+.lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.lang-toggle button{border:none;background:none;padding:8px 14px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+.lang-toggle button.on{background:var(--teal);color:#fff}
+.nav-right{display:flex;gap:10px;align-items:center}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding:110px 0 90px;background:linear-gradient(180deg,#f0fdfa 0%,#fff 70%)}
@@ -78,7 +82,6 @@ section{padding:96px 0}
 .pill{flex:1;text-align:center;font-size:12.5px;font-weight:600;padding:8px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);color:var(--muted)}
 .pill.on{background:var(--teal);border-color:var(--teal);color:#fff}
 </style>
-
 <style>
 /* sections */
 .sec-head{max-width:640px;margin:0 auto 56px;text-align:center}
@@ -122,7 +125,7 @@ section{padding:96px 0}
 
 /* steps */
 .steps{background:var(--bg-soft)}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;position:relative}
 .step-num{width:40px;height:40px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:18px}
 .step-card h3{font-size:18px;font-weight:700;margin-bottom:10px}
@@ -174,13 +177,16 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
   <div class="wrap nav-inner">
     <a class="logo" href="#"><span class="logo-mark">P</span>PT-NOTE</a>
     <nav class="nav-links" id="navLinks">
-      <a href="#features">기능</a>
-      <a href="#security">보안</a>
-      <a href="#platforms">지원 환경</a>
-      <a href="#start">시작하기</a>
+      <a href="#features" data-i18n="nav_features">기능</a>
+      <a href="#security" data-i18n="nav_security">보안</a>
+      <a href="#platforms" data-i18n="nav_platforms">지원 환경</a>
+      <a href="#start" data-i18n="nav_start">시작하기</a>
     </nav>
-    <div style="display:flex;gap:10px;align-items:center">
-      <a href="https://app.ptnote.app" class="btn btn-primary btn-sm nav-cta">무료로 시작하기</a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="ko" class="on">KO</button><button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://app.ptnote.app" class="btn btn-primary btn-sm nav-cta" data-i18n="nav_cta">무료로 시작하기</a>
       <button class="menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
     </div>
   </div>
@@ -191,37 +197,37 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge"><span class="badge-dot"></span>물리치료사를 위한 기록 앱</span>
-      <h1>치료 기록,<br><span class="hl">진료 끝나고 5분</span>이면 됩니다</h1>
-      <p class="sub">PT-NOTE는 물리치료·도수치료 환자 평가부터 치료 기록까지, 차트 작성 시간을 줄여주는 기록 앱입니다. 웹과 데스크톱, 모바일에서 이어서 쓸 수 있습니다.</p>
+      <span class="badge"><span class="badge-dot"></span><span data-i18n="hero_badge">물리치료사를 위한 기록 앱</span></span>
+      <h1 data-i18n="hero_h1">치료 기록,<br><span class="hl">진료 끝나고 5분</span>이면 됩니다</h1>
+      <p class="sub" data-i18n="hero_sub">PT-NOTE는 물리치료·도수치료 환자 평가부터 치료 기록까지, 차트 작성 시간을 줄여주는 기록 앱입니다. 웹과 데스크톱, 모바일에서 이어서 쓸 수 있습니다.</p>
       <div class="hero-cta">
-        <a href="https://app.ptnote.app" class="btn btn-primary">무료로 시작하기</a>
-        <a href="#platforms" class="btn btn-ghost">데스크톱 앱 다운로드</a>
+        <a href="https://app.ptnote.app" class="btn btn-primary" data-i18n="hero_cta1">무료로 시작하기</a>
+        <a href="#platforms" class="btn btn-ghost" data-i18n="hero_cta2">데스크톱 앱 다운로드</a>
       </div>
-      <p class="hero-note">설치 없이 웹에서 바로 시작 · 환자 데이터는 <b>AES-GCM 암호화</b> 저장</p>
+      <p class="hero-note" data-i18n="hero_note">설치 없이 웹에서 바로 시작 · 환자 데이터는 <b>AES-GCM 암호화</b> 저장</p>
     </div>
     <div class="mock reveal">
       <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.ptnote.app</span></div>
       <div class="mock-body">
         <div class="mock-patient">
           <div class="avatar">김</div>
-          <div><div class="nm">김○○ 님</div><div class="meta">요추 추간판 탈출증 · 12회차 치료 중</div></div>
+          <div><div class="nm" data-i18n="mock_name">김○○ 님</div><div class="meta" data-i18n="mock_meta">요추 추간판 탈출증 · 12회차 치료 중</div></div>
         </div>
         <div class="mock-card">
-          <h4>통증 부위</h4>
+          <h4 data-i18n="mock_pain">통증 부위</h4>
           <div class="pain-fig">
             <svg viewBox="0 0 64 120"><circle cx="32" cy="12" r="9" fill="#e2e8f0"/><rect x="22" y="24" width="20" height="44" rx="9" fill="#e2e8f0"/><rect x="14" y="28" width="7" height="34" rx="3.5" fill="#e2e8f0"/><rect x="43" y="28" width="7" height="34" rx="3.5" fill="#e2e8f0"/><rect x="23" y="70" width="7" height="38" rx="3.5" fill="#e2e8f0"/><rect x="34" y="70" width="7" height="38" rx="3.5" fill="#e2e8f0"/><circle cx="32" cy="48" r="5" fill="#0d9488"/><circle cx="24" cy="60" r="3.5" fill="#0d9488" opacity=".6"/></svg>
             <svg viewBox="0 0 64 120"><circle cx="32" cy="12" r="9" fill="#e2e8f0"/><rect x="22" y="24" width="20" height="44" rx="9" fill="#e2e8f0"/><rect x="14" y="28" width="7" height="34" rx="3.5" fill="#e2e8f0"/><rect x="43" y="28" width="7" height="34" rx="3.5" fill="#e2e8f0"/><rect x="23" y="70" width="7" height="38" rx="3.5" fill="#e2e8f0"/><rect x="34" y="70" width="7" height="38" rx="3.5" fill="#e2e8f0"/><circle cx="32" cy="36" r="5" fill="#0d9488"/><circle cx="40" cy="56" r="3.5" fill="#0d9488" opacity=".6"/></svg>
           </div>
         </div>
         <div class="mock-card">
-          <h4>통증 점수 (NRS) 추이</h4>
-          <div class="nrs"><span class="big">3</span><span class="lbl">/ 10 · 첫 내원 7 →</span></div>
+          <h4 data-i18n="mock_nrs">통증 점수 (NRS) 추이</h4>
+          <div class="nrs"><span class="big">3</span><span class="lbl" data-i18n="mock_nrs_lbl">/ 10 · 첫 내원 7 →</span></div>
           <svg class="chart" viewBox="0 0 200 86" preserveAspectRatio="none"><polyline points="0,14 28,20 56,26 84,34 112,44 140,52 168,60 200,66" fill="none" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/><circle cx="200" cy="66" r="5" fill="#0d9488"/></svg>
-          <div class="macro"><b>/도수</b> 요추부 도수치료 20분 시행…</div>
+          <div class="macro" data-i18n="mock_macro"><b>/도수</b> 요추부 도수치료 20분 시행…</div>
         </div>
         <div class="mock-foot">
-          <span class="pill on">5초 자동 저장됨</span><span class="pill">인쇄 / PDF</span><span class="pill">백업</span>
+          <span class="pill on" data-i18n="mock_pill1">5초 자동 저장됨</span><span class="pill" data-i18n="mock_pill2">인쇄 / PDF</span><span class="pill" data-i18n="mock_pill3">백업</span>
         </div>
       </div>
     </div>
@@ -232,14 +238,14 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section class="problem">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">왜 PT-NOTE인가요</span>
-      <h2>아직도 이렇게 기록하고 계신가요?</h2>
-      <p>치료는 손으로 하는데, 기록은 퇴근 후에. 현장의 불편함에서 시작했습니다.</p>
+      <span class="kicker" data-i18n="prob_kicker">왜 PT-NOTE인가요</span>
+      <h2 data-i18n="prob_h2">아직도 이렇게 기록하고 계신가요?</h2>
+      <p data-i18n="prob_sub">치료는 손으로 하는데, 기록은 퇴근 후에. 현장의 불편함에서 시작했습니다.</p>
     </div>
     <div class="prob-grid">
-      <div class="prob-card reveal"><div class="icon">📋</div><h3>찾느라 시간 쓰는 종이 차트</h3><p>서랍 속 차트를 뒤적이다 진료 시간이 밀립니다. 분실되면 기록 자체가 사라집니다.</p></div>
-      <div class="prob-card reveal"><div class="icon">🌙</div><h3>퇴근 후 밀린 기록 정리</h3><p>하루 치료가 끝나고 앉아서 쓰는 기록. 기억에 의존한 기록은 정확도가 떨어집니다.</p></div>
-      <div class="prob-card reveal"><div class="icon">🔄</div><h3>인수인계 때 막히는 기록</h3><p>전임자의 필기체를 해독하느라 시간을 쓰고, 치료 경과 파악이 늦어집니다.</p></div>
+      <div class="prob-card reveal"><div class="icon">📋</div><h3 data-i18n="prob1_t">찾느라 시간 쓰는 종이 차트</h3><p data-i18n="prob1_d">서랍 속 차트를 뒤적이다 진료 시간이 밀립니다. 분실되면 기록 자체가 사라집니다.</p></div>
+      <div class="prob-card reveal"><div class="icon">🌙</div><h3 data-i18n="prob2_t">퇴근 후 밀린 기록 정리</h3><p data-i18n="prob2_d">하루 치료가 끝나고 앉아서 쓰는 기록. 기억에 의존한 기록은 정확도가 떨어집니다.</p></div>
+      <div class="prob-card reveal"><div class="icon">🔄</div><h3 data-i18n="prob3_t">인수인계 때 막히는 기록</h3><p data-i18n="prob3_d">전임자의 필기체를 해독하느라 시간을 쓰고, 치료 경과 파악이 늦어집니다.</p></div>
     </div>
   </div>
 </section>
@@ -248,17 +254,17 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section id="features">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">주요 기능</span>
-      <h2>치료실에 맞게 설계했습니다</h2>
-      <p>물리치료 현장의 기록 흐름 그대로. 배울 것 없이 바로 쓸 수 있습니다.</p>
+      <span class="kicker" data-i18n="feat_kicker">주요 기능</span>
+      <h2 data-i18n="feat_h2">치료실에 맞게 설계했습니다</h2>
+      <p data-i18n="feat_sub">물리치료 현장의 기록 흐름 그대로. 배울 것 없이 바로 쓸 수 있습니다.</p>
     </div>
     <div class="feat-grid">
-      <div class="feat-card reveal"><div class="feat-ic">🧍</div><h3>통증 부위 다이어그램</h3><p>전면·후면 인체 도표에 통증 부위를 직접 표시합니다. 말로 설명하기 어려운 부위도 한눈에 전달됩니다.</p></div>
-      <div class="feat-card reveal"><div class="feat-ic">📈</div><h3>NRS · ROM 추이 그래프</h3><p>환자별 통증 점수와 관절가동범위 변화를 그래프로 확인합니다. 치료 경과 설명이 쉬워집니다.</p></div>
-      <div class="feat-card reveal"><div class="feat-ic">⚡</div><h3>/도수 매크로 자동완성</h3><p>자주 쓰는 문구를 미리 등록해 두면 <b>/도수</b> 한 번으로 입력됩니다. 반복 기록 시간을 크게 줄여줍니다.</p></div>
-      <div class="feat-card reveal"><div class="feat-ic">💾</div><h3>5초 자동 임시 저장</h3><p>작성 중인 내용은 5초마다 암호화되어 자동 저장됩니다. 갑자기 꺼져도 기록이 날아가지 않습니다.</p></div>
-      <div class="feat-card reveal"><div class="feat-ic">🖨️</div><h3>인쇄 · PDF · 백업</h3><p>기록 인쇄와 PDF 저장은 기본. 전체 데이터는 AES-GCM 암호화 백업으로 안전하게 내보내고 복원합니다.</p></div>
-      <div class="feat-card reveal"><div class="feat-ic">👥</div><h3>치료사 계정 관리</h3><p>치료사 등록과 퇴사 처리, 기록 이관을 지원합니다. master 계정으로 치료실 전체 기록을 관리할 수 있습니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">🧍</div><h3 data-i18n="f1_t">통증 부위 다이어그램</h3><p data-i18n="f1_d">전면·후면 인체 도표에 통증 부위를 직접 표시합니다. 말로 설명하기 어려운 부위도 한눈에 전달됩니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">📈</div><h3 data-i18n="f2_t">NRS · ROM 추이 그래프</h3><p data-i18n="f2_d">환자별 통증 점수와 관절가동범위 변화를 그래프로 확인합니다. 치료 경과 설명이 쉬워집니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">⚡</div><h3 data-i18n="f3_t">/도수 매크로 자동완성</h3><p data-i18n="f3_d">자주 쓰는 문구를 미리 등록해 두면 <b>/도수</b> 한 번으로 입력됩니다. 반복 기록 시간을 크게 줄여줍니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">💾</div><h3 data-i18n="f4_t">5초 자동 임시 저장</h3><p data-i18n="f4_d">작성 중인 내용은 5초마다 암호화되어 자동 저장됩니다. 갑자기 꺼져도 기록이 날아가지 않습니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">🖨️</div><h3 data-i18n="f5_t">인쇄 · PDF · 백업</h3><p data-i18n="f5_d">기록 인쇄와 PDF 저장은 기본. 전체 데이터는 AES-GCM 암호화 백업으로 안전하게 내보내고 복원합니다.</p></div>
+      <div class="feat-card reveal"><div class="feat-ic">👥</div><h3 data-i18n="f6_t">치료사 계정 관리</h3><p data-i18n="f6_d">치료사 등록과 퇴사 처리, 기록 이관을 지원합니다. master 계정으로 치료실 전체 기록을 관리할 수 있습니다.</p></div>
     </div>
   </div>
 </section>
@@ -267,17 +273,17 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section class="security" id="security">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">보안</span>
-      <h2>환자 정보, 가장 먼저 지킵니다</h2>
-      <p>민감한 환자 기록을 다루는 앱이기에, 보안은 기능이 아니라 전제입니다.</p>
+      <span class="kicker" data-i18n="sec_kicker">보안</span>
+      <h2 data-i18n="sec_h2">환자 정보, 가장 먼저 지킵니다</h2>
+      <p data-i18n="sec_sub">민감한 환자 기록을 다루는 앱이기에, 보안은 기능이 아니라 전제입니다.</p>
     </div>
     <div class="sec-grid">
-      <div class="sec-card reveal"><div class="feat-ic">🔐</div><h3>AES-GCM 암호화 저장</h3><p>환자 노트와 자동 백업, 임시 저장까지 모두 AES-GCM으로 암호화됩니다. 치료사 비밀번호는 PBKDF2로 안전하게 해시됩니다.</p></div>
-      <div class="sec-card reveal"><div class="feat-ic">🖥️</div><h3>OS 보안 저장소에 키 보관</h3><p>데스크톱 앱의 암호화 키는 Windows 자격 증명 관리자, macOS Keychain 같은 OS 보안 저장소에 보관됩니다.</p></div>
-      <div class="sec-card reveal"><div class="feat-ic">📦</div><h3>백업도 암호화</h3><p>데이터 내보내기 파일은 백업 암호로 암호화됩니다. 평문 내보내기는 경고를 확인한 경우에만 명시적으로 선택할 수 있습니다.</p></div>
-      <div class="sec-card reveal"><div class="feat-ic">🏠</div><h3>로컬 우선 설계</h3><p>로컬 모드는 기기 1대 단독 사용을 전제로 합니다. 클라우드에 올리지 않아도 되는 기록은 기기에만 둡니다.</p></div>
+      <div class="sec-card reveal"><div class="feat-ic">🔐</div><h3 data-i18n="s1_t">AES-GCM 암호화 저장</h3><p data-i18n="s1_d">환자 노트와 자동 백업, 임시 저장까지 모두 AES-GCM으로 암호화됩니다. 치료사 비밀번호는 PBKDF2로 안전하게 해시됩니다.</p></div>
+      <div class="sec-card reveal"><div class="feat-ic">🖥️</div><h3 data-i18n="s2_t">OS 보안 저장소에 키 보관</h3><p data-i18n="s2_d">데스크톱 앱의 암호화 키는 Windows 자격 증명 관리자, macOS Keychain 같은 OS 보안 저장소에 보관됩니다.</p></div>
+      <div class="sec-card reveal"><div class="feat-ic">📦</div><h3 data-i18n="s3_t">백업도 암호화</h3><p data-i18n="s3_d">데이터 내보내기 파일은 백업 암호로 암호화됩니다. 평문 내보내기는 경고를 확인한 경우에만 명시적으로 선택할 수 있습니다.</p></div>
+      <div class="sec-card reveal"><div class="feat-ic">🏠</div><h3 data-i18n="s4_t">로컬 우선 설계</h3><p data-i18n="s4_d">로컬 모드는 기기 1대 단독 사용을 전제로 합니다. 클라우드에 올리지 않아도 되는 기록은 기기에만 둡니다.</p></div>
     </div>
-    <p class="sec-note">웹 브라우저 환경의 구조적 한계와 권장 사용법은 앱 내 안내를 참고해 주세요.</p>
+    <p class="sec-note" data-i18n="sec_note">웹 브라우저 환경의 구조적 한계와 권장 사용법은 앱 내 안내를 참고해 주세요.</p>
   </div>
 </section>
 
@@ -285,15 +291,15 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section id="platforms">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">지원 환경</span>
-      <h2>어디서든 이어서 씁니다</h2>
-      <p>치료실 PC에서는 데스크톱 앱으로, 외출 중에는 웹과 모바일로.</p>
+      <span class="kicker" data-i18n="plat_kicker">지원 환경</span>
+      <h2 data-i18n="plat_h2">어디서든 이어서 씁니다</h2>
+      <p data-i18n="plat_sub">치료실 PC에서는 데스크톱 앱으로, 외출 중에는 웹과 모바일로.</p>
     </div>
     <div class="plat-grid">
-      <div class="plat-card reveal"><div class="feat-ic">🌐</div><h3>웹</h3><p>설치 없이 브라우저에서 바로 시작</p></div>
-      <div class="plat-card reveal"><div class="feat-ic">🪟</div><h3>Windows 데스크톱</h3><p>자동 업데이트 지원 · GitHub Releases에서 다운로드</p></div>
-      <div class="plat-card reveal"><div class="feat-ic">🍎</div><h3>macOS · Linux</h3><p>데스크톱 앱으로 동일하게 사용</p></div>
-      <div class="plat-card reveal"><div class="feat-ic">📱</div><h3>Android · iOS</h3><p>모바일에서도 기록 확인</p></div>
+      <div class="plat-card reveal"><div class="feat-ic">🌐</div><h3 data-i18n="p1_t">웹</h3><p data-i18n="p1_d">설치 없이 브라우저에서 바로 시작</p></div>
+      <div class="plat-card reveal"><div class="feat-ic">🪟</div><h3 data-i18n="p2_t">Windows 데스크톱</h3><p data-i18n="p2_d">자동 업데이트 지원 · GitHub Releases에서 다운로드</p></div>
+      <div class="plat-card reveal"><div class="feat-ic">🍎</div><h3 data-i18n="p3_t">macOS · Linux</h3><p data-i18n="p3_d">데스크톱 앱으로 동일하게 사용</p></div>
+      <div class="plat-card reveal"><div class="feat-ic">📱</div><h3 data-i18n="p4_t">Android · iOS</h3><p data-i18n="p4_d">모바일에서도 기록 확인</p></div>
     </div>
   </div>
 </section>
@@ -302,14 +308,14 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section class="steps" id="start">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">시작하기</span>
-      <h2>3단계면 충분합니다</h2>
-      <p>가입 절차도, 복잡한 설정도 없습니다.</p>
+      <span class="kicker" data-i18n="step_kicker">시작하기</span>
+      <h2 data-i18n="step_h2">3단계면 충분합니다</h2>
+      <p data-i18n="step_sub">가입 절차도, 복잡한 설정도 없습니다.</p>
     </div>
     <div class="step-grid">
-      <div class="step-card reveal"><div class="step-num">1</div><h3>웹에서 바로 시작</h3><p><code>app.ptnote.app</code>에 접속해 관리자 계정을 설정합니다. 설치가 필요 없습니다.</p></div>
-      <div class="step-card reveal"><div class="step-num">2</div><h3>환자 등록하고 기록</h3><p>환자 정보를 입력하고 통증 다이어그램과 ROM을 기록합니다. <b>/도수</b> 매크로로 빠르게 작성하세요.</p></div>
-      <div class="step-card reveal"><div class="step-num">3</div><h3>필요하면 데스크톱 앱 설치</h3><p>치료실 PC에는 Windows 데스크톱 앱을 설치합니다. 새 버전은 자동으로 업데이트됩니다.</p></div>
+      <div class="step-card reveal"><div class="step-num">1</div><h3 data-i18n="st1_t">웹에서 바로 시작</h3><p data-i18n="st1_d"><code>app.ptnote.app</code>에 접속해 관리자 계정을 설정합니다. 설치가 필요 없습니다.</p></div>
+      <div class="step-card reveal"><div class="step-num">2</div><h3 data-i18n="st2_t">환자 등록하고 기록</h3><p data-i18n="st2_d">환자 정보를 입력하고 통증 다이어그램과 ROM을 기록합니다. <b>/도수</b> 매크로로 빠르게 작성하세요.</p></div>
+      <div class="step-card reveal"><div class="step-num">3</div><h3 data-i18n="st3_t">필요하면 데스크톱 앱 설치</h3><p data-i18n="st3_d">치료실 PC에는 Windows 데스크톱 앱을 설치합니다. 새 버전은 자동으로 업데이트됩니다.</p></div>
     </div>
   </div>
 </section>
@@ -318,11 +324,11 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
 <section>
   <div class="wrap">
     <div class="cta-box reveal">
-      <h2>오늘 진료 기록부터 바꿔보세요</h2>
-      <p>PT-NOTE는 물리치료사가 직접 만드는 기록 앱입니다.<br>지금 무료로 시작할 수 있습니다.</p>
+      <h2 data-i18n="cta_h2">오늘 진료 기록부터 바꿔보세요</h2>
+      <p data-i18n="cta_p">PT-NOTE는 물리치료사가 직접 만드는 기록 앱입니다.<br>지금 무료로 시작할 수 있습니다.</p>
       <div class="cta-btns">
-        <a href="https://app.ptnote.app" class="btn btn-white">무료로 시작하기</a>
-        <a href="mailto:support@ptnote.app" class="btn btn-ghost">도입 문의하기</a>
+        <a href="https://app.ptnote.app" class="btn btn-white" data-i18n="cta_b1">무료로 시작하기</a>
+        <a href="mailto:support@ptnote.app" class="btn btn-ghost" data-i18n="cta_b2">도입 문의하기</a>
       </div>
     </div>
   </div>
@@ -334,11 +340,11 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
     <div class="foot-inner">
       <div class="foot-brand">
         <a class="logo" href="#"><span class="logo-mark">P</span>PT-NOTE</a>
-        <p>물리치료 환자 기록 앱<br>치료 기록, 진료 끝나고 5분이면 됩니다.</p>
+        <p data-i18n="foot_tag">물리치료 환자 기록 앱<br>치료 기록, 진료 끝나고 5분이면 됩니다.</p>
       </div>
       <div class="foot-links">
-        <div><h5>제품</h5><a href="#features">기능</a><a href="#security">보안</a><a href="#platforms">지원 환경</a></div>
-        <div><h5>지원</h5><a href="#start">시작하기</a><a href="mailto:support@ptnote.app">문의하기</a><a href="https://github.com/tone7718-droid/PT-Progress-Note" target="_blank" rel="noopener">GitHub</a></div>
+        <div><h5 data-i18n="foot_prod">제품</h5><a href="#features" data-i18n="nav_features">기능</a><a href="#security" data-i18n="nav_security">보안</a><a href="#platforms" data-i18n="nav_platforms">지원 환경</a></div>
+        <div><h5 data-i18n="foot_sup">지원</h5><a href="#start" data-i18n="nav_start">시작하기</a><a href="mailto:support@ptnote.app" data-i18n="cta_b2">도입 문의하기</a><a href="https://github.com/tone7718-droid/PT-Progress-Note" target="_blank" rel="noopener">GitHub</a></div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -347,8 +353,132 @@ footer{border-top:1px solid var(--line);padding:48px 0;color:var(--muted);font-s
     </div>
   </div>
 </footer>
-
 <script>
+var I18N = {
+ko: {
+  meta_title: "PT-NOTE — 물리치료 환자 기록 앱",
+  meta_desc: "PT-NOTE는 물리치료·도수치료 환자 평가부터 치료 기록까지, 차트 작성 시간을 줄여주는 기록 앱입니다.",
+  nav_features: "기능", nav_security: "보안", nav_platforms: "지원 환경", nav_start: "시작하기", nav_cta: "무료로 시작하기",
+  hero_badge: "물리치료사를 위한 기록 앱",
+  hero_h1: '치료 기록,<br><span class="hl">진료 끝나고 5분</span>이면 됩니다',
+  hero_sub: "PT-NOTE는 물리치료·도수치료 환자 평가부터 치료 기록까지, 차트 작성 시간을 줄여주는 기록 앱입니다. 웹과 데스크톱, 모바일에서 이어서 쓸 수 있습니다.",
+  hero_cta1: "무료로 시작하기", hero_cta2: "데스크톱 앱 다운로드",
+  hero_note: '설치 없이 웹에서 바로 시작 · 환자 데이터는 <b>AES-GCM 암호화</b> 저장',
+  mock_name: "김○○ 님", mock_meta: "요추 추간판 탈출증 · 12회차 치료 중",
+  mock_pain: "통증 부위", mock_nrs: "통증 점수 (NRS) 추이", mock_nrs_lbl: "/ 10 · 첫 내원 7 →",
+  mock_macro: "<b>/도수</b> 요추부 도수치료 20분 시행…",
+  mock_pill1: "5초 자동 저장됨", mock_pill2: "인쇄 / PDF", mock_pill3: "백업",
+  prob_kicker: "왜 PT-NOTE인가요", prob_h2: "아직도 이렇게 기록하고 계신가요?",
+  prob_sub: "치료는 손으로 하는데, 기록은 퇴근 후에. 현장의 불편함에서 시작했습니다.",
+  prob1_t: "찾느라 시간 쓰는 종이 차트", prob1_d: "서랍 속 차트를 뒤적이다 진료 시간이 밀립니다. 분실되면 기록 자체가 사라집니다.",
+  prob2_t: "퇴근 후 밀린 기록 정리", prob2_d: "하루 치료가 끝나고 앉아서 쓰는 기록. 기억에 의존한 기록은 정확도가 떨어집니다.",
+  prob3_t: "인수인계 때 막히는 기록", prob3_d: "전임자의 필기체를 해독하느라 시간을 쓰고, 치료 경과 파악이 늦어집니다.",
+  feat_kicker: "주요 기능", feat_h2: "치료실에 맞게 설계했습니다",
+  feat_sub: "물리치료 현장의 기록 흐름 그대로. 배울 것 없이 바로 쓸 수 있습니다.",
+  f1_t: "통증 부위 다이어그램", f1_d: "전면·후면 인체 도표에 통증 부위를 직접 표시합니다. 말로 설명하기 어려운 부위도 한눈에 전달됩니다.",
+  f2_t: "NRS · ROM 추이 그래프", f2_d: "환자별 통증 점수와 관절가동범위 변화를 그래프로 확인합니다. 치료 경과 설명이 쉬워집니다.",
+  f3_t: "/도수 매크로 자동완성", f3_d: "자주 쓰는 문구를 미리 등록해 두면 <b>/도수</b> 한 번으로 입력됩니다. 반복 기록 시간을 크게 줄여줍니다.",
+  f4_t: "5초 자동 임시 저장", f4_d: "작성 중인 내용은 5초마다 암호화되어 자동 저장됩니다. 갑자기 꺼져도 기록이 날아가지 않습니다.",
+  f5_t: "인쇄 · PDF · 백업", f5_d: "기록 인쇄와 PDF 저장은 기본. 전체 데이터는 AES-GCM 암호화 백업으로 안전하게 내보내고 복원합니다.",
+  f6_t: "치료사 계정 관리", f6_d: "치료사 등록과 퇴사 처리, 기록 이관을 지원합니다. master 계정으로 치료실 전체 기록을 관리할 수 있습니다.",
+  sec_kicker: "보안", sec_h2: "환자 정보, 가장 먼저 지킵니다",
+  sec_sub: "민감한 환자 기록을 다루는 앱이기에, 보안은 기능이 아니라 전제입니다.",
+  s1_t: "AES-GCM 암호화 저장", s1_d: "환자 노트와 자동 백업, 임시 저장까지 모두 AES-GCM으로 암호화됩니다. 치료사 비밀번호는 PBKDF2로 안전하게 해시됩니다.",
+  s2_t: "OS 보안 저장소에 키 보관", s2_d: "데스크톱 앱의 암호화 키는 Windows 자격 증명 관리자, macOS Keychain 같은 OS 보안 저장소에 보관됩니다.",
+  s3_t: "백업도 암호화", s3_d: "데이터 내보내기 파일은 백업 암호로 암호화됩니다. 평문 내보내기는 경고를 확인한 경우에만 명시적으로 선택할 수 있습니다.",
+  s4_t: "로컬 우선 설계", s4_d: "로컬 모드는 기기 1대 단독 사용을 전제로 합니다. 클라우드에 올리지 않아도 되는 기록은 기기에만 둡니다.",
+  sec_note: "웹 브라우저 환경의 구조적 한계와 권장 사용법은 앱 내 안내를 참고해 주세요.",
+  plat_kicker: "지원 환경", plat_h2: "어디서든 이어서 씁니다",
+  plat_sub: "치료실 PC에서는 데스크톱 앱으로, 외출 중에는 웹과 모바일로.",
+  p1_t: "웹", p1_d: "설치 없이 브라우저에서 바로 시작",
+  p2_t: "Windows 데스크톱", p2_d: "자동 업데이트 지원 · GitHub Releases에서 다운로드",
+  p3_t: "macOS · Linux", p3_d: "데스크톱 앱으로 동일하게 사용",
+  p4_t: "Android · iOS", p4_d: "모바일에서도 기록 확인",
+  step_kicker: "시작하기", step_h2: "3단계면 충분합니다", step_sub: "가입 절차도, 복잡한 설정도 없습니다.",
+  st1_t: "웹에서 바로 시작", st1_d: "<code>app.ptnote.app</code>에 접속해 관리자 계정을 설정합니다. 설치가 필요 없습니다.",
+  st2_t: "환자 등록하고 기록", st2_d: "환자 정보를 입력하고 통증 다이어그램과 ROM을 기록합니다. <b>/도수</b> 매크로로 빠르게 작성하세요.",
+  st3_t: "필요하면 데스크톱 앱 설치", st3_d: "치료실 PC에는 Windows 데스크톱 앱을 설치합니다. 새 버전은 자동으로 업데이트됩니다.",
+  cta_h2: "오늘 진료 기록부터 바꿔보세요",
+  cta_p: "PT-NOTE는 물리치료사가 직접 만드는 기록 앱입니다.<br>지금 무료로 시작할 수 있습니다.",
+  cta_b1: "무료로 시작하기", cta_b2: "도입 문의하기",
+  foot_tag: "물리치료 환자 기록 앱<br>치료 기록, 진료 끝나고 5분이면 됩니다.",
+  foot_prod: "제품", foot_sup: "지원"
+},
+en: {
+  meta_title: "PT-NOTE — Charting App for Physical Therapists",
+  meta_desc: "PT-NOTE is a charting app for physical and manual therapy — from patient evaluation to treatment notes, it cuts your documentation time.",
+  nav_features: "Features", nav_security: "Security", nav_platforms: "Platforms", nav_start: "Get started", nav_cta: "Start free",
+  hero_badge: "Charting app for physical therapists",
+  hero_h1: 'Therapy notes,<br><span class="hl">done in 5 minutes</span> after your session',
+  hero_sub: "PT-NOTE is a charting app for physical and manual therapy — from patient evaluation to treatment notes, it cuts your documentation time. Use it on web, desktop, and mobile.",
+  hero_cta1: "Start free", hero_cta2: "Download desktop app",
+  hero_note: 'Start instantly in your browser, no install · Patient data stored with <b>AES-GCM encryption</b>',
+  mock_name: "Patient Kim", mock_meta: "Lumbar disc herniation · Session 12",
+  mock_pain: "Pain sites", mock_nrs: "Pain score (NRS) trend", mock_nrs_lbl: "/ 10 · was 7 at first visit →",
+  mock_macro: "<b>/manual</b> 20 min manual therapy, lumbar region…",
+  mock_pill1: "Auto-saved every 5s", mock_pill2: "Print / PDF", mock_pill3: "Backup",
+  prob_kicker: "Why PT-NOTE", prob_h2: "Still charting like this?",
+  prob_sub: "Treatments are hands-on, but notes wait until after hours. We started from that frustration.",
+  prob1_t: "Paper charts eat your time", prob1_d: "Digging through drawers delays appointments. Lose the chart, lose the record.",
+  prob2_t: "After-hours catch-up notes", prob2_d: "Charting after a full day of treatments. Memory-based notes lose accuracy.",
+  prob3_t: "Handovers hit a wall", prob3_d: "Deciphering a predecessor's handwriting wastes time and slows understanding of treatment progress.",
+  feat_kicker: "Key features", feat_h2: "Designed for the treatment room",
+  feat_sub: "It follows your real documentation flow. No learning curve — just start.",
+  f1_t: "Pain-site diagrams", f1_d: "Mark pain sites directly on front/back body charts. Hard-to-describe spots become instantly clear.",
+  f2_t: "NRS & ROM trend graphs", f2_d: "Track each patient's pain scores and range of motion over time. Explaining progress gets easy.",
+  f3_t: "/manual macro autocomplete", f3_d: "Register frequently used phrases and type <b>/manual</b> once to autocomplete them. Slashes repetitive typing time.",
+  f4_t: "Auto-save every 5 seconds", f4_d: "Drafts are encrypted and saved automatically every 5 seconds. A sudden shutdown won't lose your notes.",
+  f5_t: "Print · PDF · Backup", f5_d: "Print and PDF export built in. Full data backup and restore with AES-GCM encryption.",
+  f6_t: "Therapist account management", f6_d: "Register therapists, handle departures, and transfer records. Manage the whole clinic's charts with a master account.",
+  sec_kicker: "Security", sec_h2: "Patient data comes first",
+  sec_sub: "Handling sensitive patient records means security isn't a feature — it's the premise.",
+  s1_t: "AES-GCM encrypted storage", s1_d: "Patient notes, auto-backups, and drafts are all encrypted with AES-GCM. Therapist passwords are hashed with PBKDF2.",
+  s2_t: "Keys in OS secure storage", s2_d: "Desktop app encryption keys live in the OS secure store — Windows Credential Manager, macOS Keychain, and equivalents.",
+  s3_t: "Encrypted backups too", s3_d: "Exported data files are encrypted with a backup password. Plain-text export requires explicit confirmation after a warning.",
+  s4_t: "Local-first design", s4_d: "Local mode assumes single-device use. Records that don't need the cloud stay on your device.",
+  sec_note: "See the in-app guidance for browser limitations and recommended usage.",
+  plat_kicker: "Platforms", plat_h2: "Pick up where you left off, anywhere",
+  plat_sub: "Desktop app on the clinic PC, web and mobile on the go.",
+  p1_t: "Web", p1_d: "Start instantly in your browser, no install",
+  p2_t: "Windows desktop", p2_d: "Auto-updates · Download from GitHub Releases",
+  p3_t: "macOS · Linux", p3_d: "Same experience as a desktop app",
+  p4_t: "Android · iOS", p4_d: "Check records on mobile",
+  step_kicker: "Get started", step_h2: "Three steps is all it takes", step_sub: "No sign-up maze, no complex setup.",
+  st1_t: "Start in your browser", st1_d: "Open <code>app.ptnote.app</code> and set up your admin account. Nothing to install.",
+  st2_t: "Register patients and chart", st2_d: "Enter patient info and record pain diagrams and ROM. Type <b>/manual</b> for fast macro entry.",
+  st3_t: "Install the desktop app if needed", st3_d: "Install the Windows desktop app on clinic PCs. New versions update automatically.",
+  cta_h2: "Change today's charting",
+  cta_p: "PT-NOTE is a charting app built by a physical therapist.<br>Start free today.",
+  cta_b1: "Start free", cta_b2: "Contact us",
+  foot_tag: "Charting app for physical therapists<br>Therapy notes, done in 5 minutes.",
+  foot_prod: "Product", foot_sup: "Support"
+}};
+
+function setLang(l){
+  var d = I18N[l] || I18N.ko;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.title = d.meta_title;
+  var md = document.querySelector('meta[name="description"]');
+  if(md) md.setAttribute('content', d.meta_desc);
+  document.documentElement.lang = (l === 'en') ? 'en' : 'ko';
+  document.querySelectorAll('.lang-toggle button').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-lang') === l);
+  });
+  try{ localStorage.setItem('ptnote-lang', l); }catch(e){}
+}
+document.querySelectorAll('.lang-toggle button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+});
+(function(){
+  var saved = 'ko';
+  try{ saved = localStorage.getItem('ptnote-lang') || 'ko'; }catch(e){}
+  if(saved !== 'ko' && saved !== 'en') saved = 'ko';
+  setLang(saved);
+})();
+
 document.getElementById('menuBtn').addEventListener('click',function(){
   document.getElementById('navLinks').classList.toggle('open');
 });
